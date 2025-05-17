@@ -1,6 +1,6 @@
 # 📬 InboxGuard - Action Service
 
-**Action-Service** est l’un des modules principaux du projet **InboxGuard**, un système distribué de détection et de réaction automatique au phishing par email.
+**Actions-Service** est l’un des modules principaux du projet **InboxGuard**, un système distribué de détection et de réaction automatique au phishing par email.
 
 Ce module est responsable de l'exécution des **actions système automatisées** sur les emails d'une boîte de réception en fonction d’un **score de phishing** fourni par un modèle d'IA.
 
@@ -32,6 +32,7 @@ Le module permet de :
 ## 📁 Structure du projet
 
 action-service/
+
 ├── inboxguard_actions.sh # Script Bash principal
 
 ├── imap_action.py # Script Python pour les actions IMAP
