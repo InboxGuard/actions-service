@@ -1,0 +1,36 @@
+2025-05-15-22-03-58 : ayoub17 : INFOS : Connexion simulée à imap.fake.com en tant que test@example.com
+2025-05-15-22-03-59 : ayoub17 : INFOS : Email 001 : SÛR – aucune action
+2025-05-15-22-03-59 : ayoub17 : INFOS : Email 003 : DANGEREUX – suppression ou quarantaine
+2025-05-15-22-03-59 : ayoub17 : INFOS : Email 002 : TAGGED – annotation ajoutée
+2025-05-15-22-03-59 : ayoub17 : INFOS : Traitement terminé.
+2025-05-15-22-07-54 : ayoub17 : ERROR : Paramètres de connexion manquants
+2025-05-15-23-23-32 : ayoub17 : INFOS : Connexion simulée à imap.gmail.com en tant que you@gmail.com
+2025-05-15-23-23-33 : ayoub17 : INFOS : Action tag appliquée sur email 002 (score=67)
+2025-05-15-23-23-33 : ayoub17 : INFOS : Action safe appliquée sur email 001 (score=25)
+2025-05-15-23-23-33 : ayoub17 : INFOS : Action quarantine appliquée sur email 003 (score=92)
+2025-05-15-23-23-33 : ayoub17 : INFOS : Traitement terminé.
+2025-05-15-23-24-52 : ayoub17 : INFOS : Connexion simulée à imap.gmail.com en tant que elhardiayoub4@gmail.com
+2025-05-15-23-24-54 : ayoub17 : INFOS : Action quarantine appliquée sur email 003 (score=92)
+2025-05-15-23-24-54 : ayoub17 : INFOS : Action safe appliquée sur email 001 (score=25)
+2025-05-15-23-24-54 : ayoub17 : INFOS : Action tag appliquée sur email 002 (score=67)
+2025-05-15-23-24-54 : ayoub17 : INFOS : Traitement terminé.
+2025-05-15-23-34-01 : ayoub17 : INFOS : Connexion simulée à imap.gmail.com en tant que elhardiayoub4@gmail.com
+2025-05-15-23-34-11 : ayoub17 : INFOS : Action quarantine appliquée sur email 003 (score=92)
+2025-05-15-23-34-11 : ayoub17 : INFOS : Action tag appliquée sur email 002 (score=67)
+2025-05-15-23-34-11 : ayoub17 : INFOS : Action safe appliquée sur email 001 (score=25)
+2025-05-15-23-34-11 : ayoub17 : INFOS : Traitement terminé.
+2025-05-15-23-41-18 : ayoub17 : INFOS : Connexion simulée à imap.gmail.com en tant que elhardiayoub4@gmail.com
+2025-05-15-23-41-20 : ayoub17 : INFOS : Action safe appliquée sur email 001 (score=25)
+2025-05-15-23-41-20 : ayoub17 : INFOS : Action quarantine appliquée sur email 003 (score=92)
+2025-05-15-23-41-20 : ayoub17 : INFOS : Action tag appliquée sur email 002 (score=67)
+2025-05-15-23-41-20 : ayoub17 : INFOS : Traitement terminé.
+2025-05-15-23-44-45 : ayoub17 : INFOS : Connexion simulée à imap.gmail.com en tant que elhardiayoub4@gmail.com
+2025-05-15-23-44-47 : ayoub17 : ERROR : Échec de l'action tag sur email 002
+2025-05-15-23-44-47 : ayoub17 : ERROR : Échec de l'action safe sur email 001
+2025-05-15-23-44-47 : ayoub17 : ERROR : Échec de l'action quarantine sur email 003
+2025-05-15-23-44-47 : ayoub17 : INFOS : Traitement terminé.
+2025-05-15-23-45-32 : ayoub17 : INFOS : Connexion simulée à imap.gmail.com en tant que elhardiayoub4@gmail.com
+2025-05-15-23-45-34 : ayoub17 : INFOS : Action safe appliquée sur email 001 (score=25)
+2025-05-15-23-45-34 : ayoub17 : INFOS : Action tag appliquée sur email 002 (score=67)
+2025-05-15-23-45-35 : ayoub17 : INFOS : Action quarantine appliquée sur email 003 (score=92)
+2025-05-15-23-45-35 : ayoub17 : INFOS : Traitement terminé.
