@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ============================
-# InboxGuard - Email Actions
+# InboxGuard - Email Actions (IA-Connected Version)
 # ============================
 
 # ========== CONFIG ==========
@@ -14,6 +14,7 @@ EMAIL_ID=""
 QUARANTINE_DIR="./quarantine"
 SIMULATE=false
 RESTORE_MODE=false
+PORT=9090  # Port par défaut pour écouter les scores IA
 
 # ========== USAGE ==========
 usage() {
@@ -54,20 +55,17 @@ restore_emails() {
 # ========== ACTION ==========
 perform_action() {
   local email_id="$1"
-  local score="$2"
+  local ia_code="$2"
   local action="safe"
 
-  if [ "$score" -le 30 ]; then
-    action="safe"
-  elif [ "$score" -le 60 ]; then
-    action="flag"
-  elif [ "$score" -le 85 ]; then
-    action="tag"
-  else
+  if [ "$ia_code" -eq 1 ]; then
+    action="delete"
+  elif [ "$ia_code" -eq -1 ]; then
     action="quarantine"
+  else
+    action="safe"
   fi
 
-  # Appel du script Python pour exécuter l'action réelle via IMAP
   if python3 imap_action.py \
     --email "$EMAIL" \
     --pass "$PASSWORD" \
@@ -75,7 +73,7 @@ perform_action() {
     --mailid "$email_id" \
     --action "$action"
   then
-    log_action "INFOS" "Action $action appliquée sur email $email_id (score=$score)"
+    log_action "INFOS" "Action $action appliquée sur email $email_id (ia_code=$ia_code)"
   else
     log_action "ERROR" "Échec de l'action $action sur email $email_id"
   fi
@@ -106,22 +104,20 @@ if [ -z "$EMAIL" ] || [ -z "$PASSWORD" ] || [ -z "$SERVER" ]; then
   exit 101
 fi
 
-# Simuler récupération d'emails et scores depuis IA
-# Ici on simule 3 emails avec des scores (ceci sera intégré plus tard avec le module IA)
-declare -A EMAIL_SCORES
-EMAIL_SCORES=( ["001"]=25 ["002"]=67 ["003"]=92 )
-
 log_action "INFOS" "Connexion simulée à $SERVER en tant que $EMAIL"
 
-# Traitement des emails en parallèle (fork simulation)
-for email_id in "${!EMAIL_SCORES[@]}"; do
-  score="${EMAIL_SCORES[$email_id]}"
-  (
-    perform_action "$email_id" "$score"
-  ) &
+# ========== ÉCOUTE DU SCORE IA VIA UN PORT TCP ==========
+echo "[INFO] En attente des scores IA sur le port $PORT..."
+
+nc -lk -p $PORT | while read line; do
+  email_id=$(echo "$line" | cut -d ':' -f1)
+  ia_score=$(echo "$line" | cut -d ':' -f2)
+  echo "[REÇU] $email_id → score IA: $ia_score"
+
+  if $ACTION_MODE; then
+    perform_action "$email_id" "$ia_score"
+  else
+    log_action "INFOS" "Scan reçu pour $email_id avec score IA: $ia_score — aucune action (mode passif)"
+  fi
+
 done
-wait
-
-log_action "INFOS" "Traitement terminé."
-
-exit 0
